@@ -307,8 +307,10 @@
                     <label>與新人的關係 <span class="label-en">RELATIONSHIP</span></label>
                     <select name="entry.133531335" required>
                         <option value="" disabled selected>請選擇關係</option>
-                        <option value="男方-建富的親友">男方-建富的親友</option>
+                        <option value="男方-Jeff建富的親友">男方-建富的親友</option>
                         <option value="女方-Jessica的親友">女方-Jessica的親友</option>
+                        <option value="內湖高工同事">內湖高工同事</option>
+                        <option value="女方教堂的夥伴">女方教堂的夥伴</option>
                     </select>
                 </div>
 
@@ -316,7 +318,8 @@
                 <div>
                     <label>出席意願 <span class="label-en">ATTENDANCE</span></label>
                     <select name="entry.1037440218" required>
-                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！</option>
+                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！環保愛地球，請寄電子喜帖給我</option>
+                        <option value="會！一定會參加！請寄紙本喜帖給我">會！一定會參加！請寄紙本喜帖給我</option>
                         <option value="不克參加，但我祝福滿滿">不克參加，但我祝福滿滿</option>
                     </select>
                 </div>
@@ -324,7 +327,7 @@
                 <!-- 參加晚宴人數 -->
                 <div>
                     <label>參加晚宴人數 <span class="label-en">NUMBER OF GUESTS</span></label>
-                    <input type="number" id="guestCount" name="entry.570998358" min="0" max="10" placeholder="0" oninput="toggleLogicFields()">
+                    <input type="number" id="guestCount" name="entry.1365883754" min="0" max="10" placeholder="0" oninput="toggleLogicFields()">
                 </div>
 
                 <!-- 智慧顯示區塊 (僅在人數 > 0 時顯示) -->
@@ -337,11 +340,8 @@
 
                     <!-- 兒童椅 -->
                     <div>
-                        <label>是否需要兒童椅 <span class="label-en">BABY CHAIR</span></label>
-                        <select name="entry.1505679686">
-                            <option value="否">否</option>
-                            <option value="是">是</option>
-                        </select>
+                        <label>需要幾個兒童椅 <span class="label-en">BABY CHAIR</span></label>
+                        <input type="text" name="entry.332745958" placeholder="例如：1個 / 無">
                     </div>
                 </div>
 
@@ -354,7 +354,7 @@
                 <!-- 備註/對新人的話 -->
                 <div class="mt-4">
                     <label>備註/對新人的話 <span class="label-en">MESSAGE</span></label>
-                    <textarea name="entry.1365883754" rows="4" placeholder="給新人的祝福或備註..."></textarea>
+                    <textarea name="entry.570998358" rows="4" placeholder="給新人的祝福或備註..."></textarea>
                 </div>
 
                 <button type="submit" class="w-full mt-12 py-5 btn-primary rounded-lg text-lg font-bold">
