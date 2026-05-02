@@ -288,6 +288,7 @@
             <!-- 隱藏的 Iframe 用於提交 -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess();}"></iframe>
             
+            <!-- 表單路徑與 ID 已根據 prefill 連結核對修正 -->
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
                 
                 <!-- 姓名 -->
@@ -302,46 +303,50 @@
                     <input type="email" name="entry.1828609452" required placeholder="example@mail.com">
                 </div>
 
-                <!-- 與新人的關係 (對齊 Google Form 選項) -->
+                <!-- 與新人的關係 -->
                 <div>
                     <label>與新人的關係 <span class="label-en">RELATIONSHIP</span></label>
                     <select name="entry.133531335" required>
                         <option value="" disabled selected>請選擇關係</option>
-                        <option value="男方-Jeff建富的親友">男方-Jeff建富的親友</option>
+                        <option value="男方-建富的親友">男方-建富的親友</option>
                         <option value="女方-Jessica的親友">女方-Jessica的親友</option>
-                        <option value="內湖高工同事">內湖高工同事</option>
-                        <option value="女方教堂的夥伴">女方教堂的夥伴</option>
                     </select>
                 </div>
 
-                <!-- 出席意願 (對齊 Google Form 選項) -->
+                <!-- 出席意願 -->
                 <div>
                     <label>出席意願 <span class="label-en">ATTENDANCE</span></label>
-                    <select name="entry.1037440218" required>
-                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！環保愛地球，請寄電子喜帖給我</option>
-                        <option value="會！一定會參加！請寄紙本喜帖給我">會！一定會參加！請寄紙本喜帖給我</option>
+                    <select id="attendanceChoice" name="entry.1037440218" required onchange="toggleLogicFields()">
+                        <option value="" disabled selected>請選擇您的意願</option>
+                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！</option>
                         <option value="不克參加，但我祝福滿滿">不克參加，但我祝福滿滿</option>
                     </select>
                 </div>
 
-                <!-- 參加晚宴人數 -->
-                <div>
-                    <label>參加晚宴人數 <span class="label-en">NUMBER OF GUESTS</span></label>
-                    <input type="number" id="guestCount" name="entry.1365883754" min="0" max="10" placeholder="0" oninput="toggleLogicFields()">
-                </div>
-
-                <!-- 智慧顯示區塊 (僅在人數 > 0 時顯示) -->
-                <div id="logicFields" style="display: none;" class="bg-[#fefae0]/50 p-6 mt-6 rounded-lg border border-[#d4a373]/20 fade-in">
-                    <!-- 素食需求 -->
+                <!-- 智慧顯示：參加人數與細節 (僅在「會參加」時顯示) -->
+                <div id="logicFields" style="display: none;" class="fade-in">
+                    <!-- 參加晚宴人數 -->
                     <div>
-                        <label class="mt-0">是否需要素食？(幾份) 若無則填：無 <span class="label-en">VEGETARIAN</span></label>
-                        <input type="text" name="entry.332745958" placeholder="例如：1份素食 / 無">
+                        <label>參加晚宴人數 <span class="label-en">NUMBER OF GUESTS</span></label>
+                        <input type="number" id="guestCount" name="entry.570998358" min="0" max="10" placeholder="0" oninput="toggleGuestDetails()">
                     </div>
 
-                    <!-- 兒童椅 -->
-                    <div>
-                        <label>需要幾個兒童椅 <span class="label-en">BABY CHAIR</span></label>
-                        <input type="text" name="entry.332745958" placeholder="例如：1個 / 無">
+                    <!-- 人數大於 0 才顯示的細節 -->
+                    <div id="guestDetails" style="display: none;" class="bg-[#fefae0]/50 p-6 mt-6 rounded-lg border border-[#d4a373]/20">
+                        <!-- 素食需求 -->
+                        <div>
+                            <label class="mt-0">是否需要素食？(幾份) 若無則填：無 <span class="label-en">VEGETARIAN</span></label>
+                            <input type="text" name="entry.332745958" placeholder="例如：1份素食 / 無">
+                        </div>
+
+                        <!-- 兒童椅 -->
+                        <div>
+                            <label>是否需要兒童椅 <span class="label-en">BABY CHAIR</span></label>
+                            <select name="entry.1505679686">
+                                <option value="否">否</option>
+                                <option value="是">是</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -354,7 +359,7 @@
                 <!-- 備註/對新人的話 -->
                 <div class="mt-4">
                     <label>備註/對新人的話 <span class="label-en">MESSAGE</span></label>
-                    <textarea name="entry.570998358" rows="4" placeholder="給新人的祝福或備註..."></textarea>
+                    <textarea name="entry.1365883754" rows="4" placeholder="給新人的祝福或備註..."></textarea>
                 </div>
 
                 <button type="submit" class="w-full mt-12 py-5 btn-primary rounded-lg text-lg font-bold">
@@ -384,7 +389,7 @@
     <script>
         let submitted = false;
 
-        // 倒數計時邏輯：目標 115年 (2026年) 10月10日 17:30
+        // 倒數計時：2026/10/10 17:30
         const weddingDate = new Date("Oct 10, 2026 17:30:00").getTime();
 
         function updateCountdown() {
@@ -410,24 +415,35 @@
         const timerInterval = setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 智慧表單邏輯：檢查「參加晚宴人數」
+        // 智慧表單：出席意願連動
         function toggleLogicFields() {
-            const guestCount = document.getElementById('guestCount').value;
+            const choice = document.getElementById('attendanceChoice').value;
             const logicFields = document.getElementById('logicFields');
-            if (guestCount !== "" && parseInt(guestCount) > 0) {
+            if (choice.includes("會！")) {
                 logicFields.style.display = 'block';
             } else {
                 logicFields.style.display = 'none';
             }
         }
 
-        // 折疊面板邏輯
+        // 智慧表單：人數連動
+        function toggleGuestDetails() {
+            const guestCount = document.getElementById('guestCount').value;
+            const guestDetails = document.getElementById('guestDetails');
+            if (guestCount !== "" && parseInt(guestCount) > 0) {
+                guestDetails.style.display = 'block';
+            } else {
+                guestDetails.style.display = 'none';
+            }
+        }
+
+        // 折疊面板
         function toggleAccordion(btn) {
             const item = btn.parentElement;
             item.classList.toggle('accordion-active');
         }
 
-        // 提交成功處理 (由 Iframe onload 觸發)
+        // 提交成功
         function showSuccess() {
             document.querySelector('form').style.display = 'none';
             document.getElementById('successMsg').style.display = 'block';
