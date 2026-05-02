@@ -153,23 +153,24 @@
                 <div class="w-10 h-[2px] bg-[#8da399] mx-auto mb-4"></div>
             </div>
 
+            <!-- 隱藏式 Iframe 提交技術 -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess();}"></iframe>
             
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
                 
-                <!-- 您的姓名 -->
+                <!-- 您的姓名 (entry.927207703) -->
                 <div>
                     <label>您的姓名 <span class="label-en">NAME</span></label>
                     <input type="text" name="entry.927207703" required placeholder="請輸入姓名">
                 </div>
 
-                <!-- 電子郵件 -->
+                <!-- 電子郵件 (entry.1828609452) -->
                 <div>
                     <label>電子郵件 <span class="label-en">EMAIL</span></label>
                     <input type="email" name="entry.1828609452" required placeholder="example@mail.com">
                 </div>
 
-                <!-- 與新人的關係 (更新為三個選項) -->
+                <!-- 與新人的關係 (entry.133531335) -->
                 <div>
                     <label>與新人的關係 <span class="label-en">RELATIONSHIP</span></label>
                     <select name="entry.133531335" required>
@@ -180,7 +181,7 @@
                     </select>
                 </div>
 
-                <!-- 出席意願 (更新為三個選項) -->
+                <!-- 出席意願 (entry.1037440218) -->
                 <div>
                     <label>出席意願 <span class="label-en">ATTENDANCE</span></label>
                     <select id="attendanceChoice" name="entry.1037440218" required onchange="toggleLogic()">
@@ -202,23 +203,25 @@
                     <!-- 人數大於 0 才顯示細節 -->
                     <div id="guestDetails" style="display: none;" class="bg-[#fefae0]/50 p-6 mt-6 rounded-lg border border-[#d4a373]/20">
                         <div>
+                            <!-- 素食需求 (entry.332745958) -->
                             <label class="mt-0">素食需求 (幾份) 若無請填「無」 <span class="label-en">VEGETARIAN</span></label>
                             <input type="text" name="entry.332745958" placeholder="例如：1 / 無">
                         </div>
                         <div>
+                            <!-- 兒童椅需求數量 (entry.1505679686) -->
                             <label>兒童椅需求數量 (幾張) 若無請填「0」 <span class="label-en">BABY CHAIR</span></label>
                             <input type="number" name="entry.1505679686" min="0" max="10" placeholder="請輸入數量">
                         </div>
                     </div>
                 </div>
 
-                <!-- 地址 -->
+                <!-- 地址 (entry.796650550) -->
                 <div class="mt-4">
                     <label>寄送地址 (若選電子喜帖可免填) <span class="label-en">ADDRESS</span></label>
                     <input type="text" name="entry.796650550" placeholder="收件地址">
                 </div>
 
-                <!-- 留言 (entry.570998358) -->
+                <!-- 對新人的話 (entry.570998358) -->
                 <div class="mt-4">
                     <label>對新人的話 <span class="label-en">MESSAGE</span></label>
                     <textarea name="entry.570998358" rows="4" placeholder="祝福語..."></textarea>
@@ -256,16 +259,18 @@
 
         function toggleLogic() {
             const val = document.getElementById('attendanceChoice').value;
-            // 只要選項包含「會！」，就顯示人數填寫欄位
+            // 只要選項包含「會！」，就顯示人數填寫區塊
             document.getElementById('logicFields').style.display = val.includes("會！") ? 'block' : 'none';
         }
 
         function toggleDetails() {
             const count = document.getElementById('guestCount').value;
+            // 人數大於 0 時展開細節 (素食與兒童椅)
             document.getElementById('guestDetails').style.display = (count > 0) ? 'block' : 'none';
         }
 
         function showSuccess() {
+            // 提交後隱藏表單並顯示成功訊息
             document.querySelector('form').style.display = 'none';
             document.getElementById('successMsg').style.display = 'block';
             document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'});
