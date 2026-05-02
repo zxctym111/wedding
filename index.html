@@ -1,279 +1,404 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeff & Jessica's Wedding - 雅悅會館</title>
-    <!-- 字體引入 -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Jeff & Jessica Wedding Invitation</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
-            --morandi-warm: #d4a373;
-            --morandi-green: #8da399;
-            --morandi-bg: #fefae0;
-            --glass-bg: rgba(255, 255, 255, 0.75);
+            --morandi-sun: #d4a373;
+            --morandi-sage: #8da399;
+            --morandi-cream: #fefae0;
+            --glass-bg: rgba(255, 255, 255, 0.6);
         }
 
         body {
             font-family: 'Noto Serif TC', serif;
-            background-color: var(--morandi-bg);
-            color: #333;
+            color: #4a4a4a;
             scroll-behavior: smooth;
+            background-color: var(--morandi-cream);
         }
 
-        .serif-en {
-            font-family: 'Cormorant Garamond', serif;
+        h1, h2, h3, .en-font {
+            font-family: 'Cormorant+Garamond', serif;
         }
 
-        /* 導覽列毛玻璃效果 */
+        /* Glassmorphism Navbar */
         .glass-nav {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             z-index: 1000;
         }
 
-        /* 封面全螢幕 */
+        /* Hero Section */
         .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                        url('https://i.postimg.cc/5ts0w3dC/she-ying-shi-da-zui-0008.jpg');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
-                        url('https://i.postimg.cc/5ts0w3dC/she-ying-shi-da-zui-0008.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
         }
 
-        /* 計時器卡片設計 */
+        /* Timer Card Style */
         .timer-card {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            border-radius: 16px;
-            padding: 1.25rem;
-            min-width: 85px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            min-width: 80px;
+            position: relative;
         }
-        
+
         .timer-divider {
             width: 1px;
-            height: 45px;
-            background-color: var(--morandi-warm);
-            margin: 0 0.75rem;
-            opacity: 0.4;
+            height: 40px;
+            background: #e2e2e2;
+            margin: 0 15px;
         }
 
-        /* 表單設計 */
-        .btn-primary {
-            background-color: var(--morandi-warm);
-            color: white;
-            transition: all 0.4s;
-            letter-spacing: 2px;
+        /* V-Card Design */
+        .v-card {
+            background: white;
+            border-left: 4px solid var(--morandi-sun);
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.05);
         }
 
-        .btn-primary:hover {
-            background-color: #bc8a5f;
-            box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+        /* No-wrap for mobile perfection */
+        .no-wrap {
+            white-space: nowrap;
         }
 
+        /* Accordion Style */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-open .accordion-content {
+            max-height: 500px;
+        }
+
+        /* Form Custom */
         input, select, textarea {
-            border: 1px solid #e5e7eb;
-            padding: 0.85rem;
-            border-radius: 6px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
             width: 100%;
-            margin-top: 0.4rem;
-            font-size: 0.95rem;
+            background-color: white;
         }
 
-        label {
-            font-weight: 500;
-            color: #4b5563;
-            display: block;
-            margin-top: 1.25rem;
+        .btn-submit {
+            background-color: var(--morandi-sun);
+            color: white;
+            transition: all 0.3s;
         }
 
-        .label-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.7rem;
-            letter-spacing: 1.5px;
-            color: var(--morandi-warm);
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-left: 4px;
+        .btn-submit:hover {
+            background-color: #bc8a5f;
+            transform: translateY(-2px);
         }
 
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        #vegetarian-section {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full glass-nav px-8 py-5 flex justify-between items-center">
-        <div class="serif-en text-2xl font-bold text-[#d4a373]">Jeff & Jessica</div>
-        <div class="hidden md:flex space-x-10 text-xs tracking-[0.2em] font-medium text-gray-600">
-            <a href="#rsvp" class="hover:text-[#d4a373]">出席回函 RSVP</a>
+    <!-- Fixed Glass Navigation -->
+    <nav class="fixed top-0 w-full glass-nav p-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-semibold tracking-widest text-[#d4a373] en-font">J & J</div>
+            <div class="space-x-4 md:space-x-8 text-sm md:text-base font-medium">
+                <a href="#details" class="hover:text-[#d4a373]">婚禮詳情 DETAILS</a>
+                <a href="#rsvp" class="hover:text-[#d4a373]">出席回函 RSVP</a>
+            </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="px-6">
-            <h2 class="serif-en italic text-2xl md:text-3xl mb-4 tracking-widest opacity-90">Jeff & Jessica</h2>
-            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight tracking-wider">Two Souls, One Journey.</h1>
-            <p class="serif-en text-xl tracking-[0.3em] font-light">2026 / 10 / 10</p>
+    <!-- Hero Section -->
+    <header class="hero flex items-center justify-center text-center text-white px-4">
+        <div class="space-y-4">
+            <h2 class="text-2xl md:text-3xl tracking-widest opacity-90">115.10.10</h2>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight en-font">Jeff & Jessica</h1>
+            <p class="text-xl md:text-2xl mt-4 font-light italic">拾光漫步，與你成雙</p>
         </div>
-    </section>
+    </header>
 
-    <!-- 計時器 -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <div id="countdown" class="flex flex-wrap justify-center items-center gap-4">
-                <div class="timer-card"><span id="days" class="serif-en text-4xl block text-[#d4a373]">00</span><span class="text-[10px] text-gray-400">DAYS</span></div>
+    <!-- Countdown Timer Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-2xl mb-8 tracking-widest text-[#8da399]">期待與您相見倒數</h3>
+            <div id="timer" class="flex justify-center items-center">
+                <div class="flex flex-col items-center">
+                    <div class="timer-card"><span id="days" class="text-3xl font-bold text-[#d4a373]">00</span></div>
+                    <span class="text-xs mt-2 text-gray-400 en-font">DAYS</span>
+                </div>
                 <div class="timer-divider"></div>
-                <div class="timer-card"><span id="hours" class="serif-en text-4xl block text-[#d4a373]">00</span><span class="text-[10px] text-gray-400">HOURS</span></div>
+                <div class="flex flex-col items-center">
+                    <div class="timer-card"><span id="hours" class="text-3xl font-bold text-[#d4a373]">00</span></div>
+                    <span class="text-xs mt-2 text-gray-400 en-font">HOURS</span>
+                </div>
                 <div class="timer-divider"></div>
-                <div class="timer-card"><span id="minutes" class="serif-en text-4xl block text-[#d4a373]">00</span><span class="text-[10px] text-gray-400">MINS</span></div>
+                <div class="flex flex-col items-center">
+                    <div class="timer-card"><span id="minutes" class="text-3xl font-bold text-[#d4a373]">00</span></div>
+                    <span class="text-xs mt-2 text-gray-400 en-font">MINS</span>
+                </div>
                 <div class="timer-divider"></div>
-                <div class="timer-card"><span id="seconds" class="serif-en text-4xl block text-[#d4a373]">00</span><span class="text-[10px] text-gray-400">SECS</span></div>
+                <div class="flex flex-col items-center">
+                    <div class="timer-card"><span id="seconds" class="text-3xl font-bold text-[#d4a373]">00</span></div>
+                    <span class="text-xs mt-2 text-gray-400 en-font">SECS</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 回函表單 -->
-    <section id="rsvp" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-2xl">
-            <div class="text-center mb-16">
-                <span class="serif-en text-[#d4a373] tracking-[0.4em] text-sm uppercase">Wedding RSVP</span>
-                <h2 class="text-4xl font-bold mt-4 mb-4 tracking-widest">出席回函</h2>
-                <div class="w-10 h-[2px] bg-[#8da399] mx-auto mb-4"></div>
+    <!-- Information V-Card Section -->
+    <section id="details" class="py-16 px-4 bg-stone-50">
+        <div class="max-w-xl mx-auto space-y-8">
+            <div class="v-card p-8 rounded-r-lg">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <span class="bg-[#d4a373] text-white p-1 rounded mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                    宴客時間 TIME
+                </h3>
+                <p class="text-lg">115 年 10 月 10 日</p>
+                <p class="text-gray-500">下午 5 點 30 分 準時入席</p>
             </div>
 
-            <!-- 隱藏式 Iframe 提交技術 -->
+            <div class="v-card p-8 rounded-r-lg">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <span class="bg-[#d4a373] text-white p-1 rounded mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                    宴客地點 LOCATION
+                </h3>
+                <p class="text-lg no-wrap font-bold">雅悅會館 旗艦館</p>
+                <p class="text-gray-600 no-wrap">115 臺北市南港區經貿二路166號</p>
+                <p class="text-gray-500">中國信託金融園區 A棟 3樓</p>
+            </div>
+
+            <!-- Accordion Transport -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden bg-white">
+                <button onclick="toggleAccordion('transport')" class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50">
+                    <span class="font-bold flex items-center">
+                        <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.5C2.1 10.5 2 10.7 2 11v5c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg>
+                        交通指引 TRANSPORTATION
+                    </span>
+                    <svg id="arrow-transport" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="transport" class="accordion-content bg-stone-50">
+                    <div class="p-6 text-sm space-y-4">
+                        <div>
+                            <p class="font-bold text-[#8da399]">捷運資訊 SUBWAY</p>
+                            <p>板南線 <span class="no-wrap">南港展覽館站</span> 1號出口步行 5 分鐘</p>
+                            <p>文湖線 <span class="no-wrap">南港軟體園區站</span> 2號出口步行 2 分鐘</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[#8da399]">自行開車 PARKING</p>
+                            <p>中國信託金融園區地下停車場（經貿二路 106 巷入）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-16 px-4 bg-white">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-widest mb-2">出席回函 RSVP</h2>
+                <p class="text-gray-500">請於 115 年 9 月 1 日前填寫，以利統計人數</p>
+            </div>
+
+            <!-- Hidden Iframe for submission -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {showSuccess();}"></iframe>
-            
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse?" method="post" target="hidden_iframe" onsubmit="submitted=true;">
-                
-                <!-- 您的姓名 (entry.927207703) -->
-                <div>
-                    <label>您的姓名 <span class="label-en">NAME</span></label>
-                    <input type="text" name="entry.927207703" required placeholder="請輸入姓名">
-                </div>
 
-                <!-- 電子郵件 (entry.1828609452) -->
-                <div>
-                    <label>電子郵件 <span class="label-en">EMAIL</span></label>
-                    <input type="email" name="entry.1828609452" required placeholder="example@mail.com">
-                </div>
-
-                <!-- 與新人的關係 (entry.133531335) -->
-                <div>
-                    <label>與新人的關係 <span class="label-en">RELATIONSHIP</span></label>
-                    <select name="entry.133531335" required>
-                        <option value="" disabled selected>請選擇關係</option>
-                        <option value="男方-Jeff建富的親友">男方-Jeff建富的親友</option>
-                        <option value="女方-Jessica婕芸的親友">女方-Jessica婕芸的親友</option>
-                        <option value="內湖高工的同事">內湖高工的同事</option>
-                    </select>
-                </div>
-
-                <!-- 出席意願 (entry.1037440218) -->
-                <div>
-                    <label>出席意願 <span class="label-en">ATTENDANCE</span></label>
-                    <select id="attendanceChoice" name="entry.1037440218" required onchange="toggleLogic()">
-                        <option value="" disabled selected>請選擇意願</option>
-                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！環保愛地球，請寄電子喜帖給我</option>
-                        <option value="會！一定會參加！想留紀念，請寄紙本喜帖給我">會！一定會參加！想留紀念，請寄紙本喜帖給我</option>
-                        <option value="不克參加，但我祝福滿滿">不克參加，但我祝福滿滿</option>
-                    </select>
-                </div>
-
-                <!-- 智慧顯示：僅當選擇參加時顯示 -->
-                <div id="logicFields" style="display: none;" class="fade-in">
-                    <!-- 參加晚宴人數 (entry.1365883754) -->
+            <form id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                <div class="space-y-6">
+                    <!-- Name (entry.927207703) -->
                     <div>
-                        <label>參加晚宴人數 <span class="label-en">NUMBER OF GUESTS</span></label>
-                        <input type="number" id="guestCount" name="entry.1365883754" min="0" max="10" placeholder="請輸入出席人數" oninput="toggleDetails()">
+                        <label class="block mb-2 font-medium">姓名 NAME *</label>
+                        <input type="text" name="entry.927207703" placeholder="請輸入姓名" required>
                     </div>
 
-                    <!-- 人數大於 0 才顯示細節 -->
-                    <div id="guestDetails" style="display: none;" class="bg-[#fefae0]/50 p-6 mt-6 rounded-lg border border-[#d4a373]/20">
+                    <!-- Email (entry.1828609452) -->
+                    <div>
+                        <label class="block mb-2 font-medium">電子郵件 EMAIL *</label>
+                        <input type="email" name="entry.1828609452" placeholder="請輸入您的 Email" required>
+                    </div>
+
+                    <!-- Side selection (entry.133531335) -->
+                    <div>
+                        <label class="block mb-2 font-medium">賓客身分 RELATIONSHIP *</label>
+                        <select name="entry.133531335" required>
+                            <option value="">請選擇</option>
+                            <option value="男方-Jeff建富的親友">男方-Jeff建富的親友</option>
+                            <option value="女方-Jessica婕芸的親友">女方-Jessica婕芸的親友</option>
+                            <option value="內湖高工的同事">內湖高工的同事</option>
+                        </select>
+                    </div>
+
+                    <!-- Participation (entry.1037440218) -->
+                    <div>
+                        <label class="block mb-2 font-medium">出席狀況 ATTENDANCE *</label>
+                        <select name="entry.1037440218" required onchange="handleAttendance()">
+                            <option value="">請選擇</option>
+                            <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！環保愛地球，請寄電子喜帖給我</option>
+                            <option value="會！一定會參加！想留紀念，請寄紙本喜帖給我">會！一定會參加！想留紀念，請寄紙本喜帖給我</option>
+                            <option value="不克參加，但我祝福滿滿">不克參加，但我祝福滿滿</option>
+                        </select>
+                    </div>
+
+                    <!-- Number of Adults (entry.1365883754) -->
+                    <div id="adult-count-section">
+                        <label class="block mb-2 font-medium">參加晚宴人數 ADULTS *</label>
+                        <select name="entry.1365883754" id="adult-count" required onchange="checkVegetarian()">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <!-- Vegetarian Section (entry.332745958) - Logic Controlled -->
+                    <div id="vegetarian-section">
+                        <label class="block mb-2 font-medium">是否需要素食？(幾份) 若無則填：無 VEGETARIAN *</label>
+                        <input type="text" name="entry.332745958" placeholder="例如：1 份或無" id="veg-input">
+                    </div>
+
+                    <!-- Address & Chairs -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Address (entry.796650550) -->
                         <div>
-                            <!-- 素食需求 (entry.332745958) -->
-                            <label class="mt-0">素食需求 (幾份) 若無請填「無」 <span class="label-en">VEGETARIAN</span></label>
-                            <input type="text" name="entry.332745958" placeholder="例如：1 / 無">
+                            <label class="block mb-2 font-medium">地址 ADDRESS</label>
+                            <input type="text" name="entry.796650550" placeholder="實體喜帖寄送地址">
                         </div>
-                        <div>
-                            <!-- 兒童椅需求數量 (entry.1505679686) -->
-                            <label>兒童椅需求數量 (幾張) 若無請填「0」 <span class="label-en">BABY CHAIR</span></label>
-                            <input type="number" name="entry.1505679686" min="0" max="10" placeholder="請輸入數量">
+                        <!-- High Chairs (entry.1505679686) -->
+                        <div id="chair-count-section">
+                            <label class="block mb-2 font-medium">兒童椅需求 CHAIRS</label>
+                            <select name="entry.1505679686">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
                         </div>
                     </div>
-                </div>
 
-                <!-- 地址 (entry.796650550) -->
-                <div class="mt-4">
-                    <label>寄送地址 (若選電子喜帖可免填) <span class="label-en">ADDRESS</span></label>
-                    <input type="text" name="entry.796650550" placeholder="收件地址">
-                </div>
+                    <!-- Message (entry.570998358) -->
+                    <div>
+                        <label class="block mb-2 font-medium">想對我們說的話 MESSAGE</label>
+                        <textarea name="entry.570998358" rows="3" placeholder="留下您的祝福..."></textarea>
+                    </div>
 
-                <!-- 對新人的話 (entry.570998358) -->
-                <div class="mt-4">
-                    <label>對新人的話 <span class="label-en">MESSAGE</span></label>
-                    <textarea name="entry.570998358" rows="4" placeholder="祝福語..."></textarea>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full btn-submit py-4 rounded-lg font-bold text-lg tracking-widest">
+                            送出回函 SUBMIT
+                        </button>
+                    </div>
                 </div>
-
-                <button type="submit" class="w-full mt-12 py-5 btn-primary rounded-lg text-lg font-bold">提交回函 SEND RSVP</button>
             </form>
 
-            <div id="successMsg" style="display:none;" class="mt-12 text-center p-12 border border-[#d4a373] bg-white shadow-xl fade-in">
-                <h3 class="text-2xl font-bold text-[#d4a373] mb-4">提交成功！</h3>
-                <p class="text-gray-500">期待在婚禮當天見到您！</p>
-                <button onclick="location.reload()" class="mt-8 text-sm text-[#8da399] underline">重新填寫</button>
+            <div id="successMessage" class="hidden text-center p-8 bg-green-50 border border-green-200 rounded-lg mt-8">
+                <h3 class="text-xl font-bold text-green-700 mb-2">送出成功！</h3>
+                <p>感謝您的回覆，我們 10 月 10 日見！</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 text-center text-gray-400 text-[10px] tracking-[0.3em] uppercase">
-        © 2026 Jeff & Jessica Wedding.
+    <footer class="py-12 bg-stone-100 text-center text-gray-400 text-sm">
+        <p class="en-font">JEFF & JESSICA WEDDING 2026</p>
     </footer>
 
     <script>
-        let submitted = false;
-        const weddingDate = new Date("Oct 10, 2026 17:30:00").getTime();
+        var submitted = false;
 
-        function updateCountdown() {
+        // Countdown Logic
+        const targetDate = new Date("October 10, 2026 17:30:00").getTime();
+
+        function updateTimer() {
             const now = new Date().getTime();
-            const d = weddingDate - now;
-            document.getElementById("days").innerText = Math.floor(d / 86400000).toString().padStart(2, '0');
-            document.getElementById("hours").innerText = Math.floor((d % 86400000) / 3600000).toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = Math.floor((d % 3600000) / 60000).toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = Math.floor((d % 60000) / 1000).toString().padStart(2, '0');
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+            const distance = targetDate - now;
 
-        function toggleLogic() {
-            const val = document.getElementById('attendanceChoice').value;
-            // 只要選項包含「會！」，就顯示人數填寫區塊
-            document.getElementById('logicFields').style.display = val.includes("會！") ? 'block' : 'none';
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("timer").innerHTML = "<p class='text-2xl font-bold'>WEDDING DAY IS HERE!</p>";
+            }
         }
 
-        function toggleDetails() {
-            const count = document.getElementById('guestCount').value;
-            // 人數大於 0 時展開細節 (素食與兒童椅)
-            document.getElementById('guestDetails').style.display = (count > 0) ? 'block' : 'none';
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Accordion Logic
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const parent = content.parentElement;
+            const arrow = document.getElementById('arrow-' + id);
+            
+            if (parent.classList.contains('accordion-open')) {
+                parent.classList.remove('accordion-open');
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                parent.classList.add('accordion-open');
+                arrow.style.transform = 'rotate(180deg)';
+            }
         }
 
+        // Attendance Logic
+        function handleAttendance() {
+            const attendance = document.querySelector('select[name="entry.1037440218"]').value;
+            const adultSection = document.getElementById('adult-count-section');
+            const chairSection = document.getElementById('chair-count-section');
+            const adultCount = document.getElementById('adult-count');
+
+            if (attendance === "不克參加，但我祝福滿滿") {
+                adultCount.value = "0";
+                checkVegetarian();
+            }
+        }
+
+        // Smart Form Logic
+        function checkVegetarian() {
+            const count = document.getElementById('adult-count').value;
+            const vegSection = document.getElementById('vegetarian-section');
+            const vegInput = document.getElementById('veg-input');
+            
+            if (parseInt(count) > 0) {
+                vegSection.style.display = 'block';
+                vegInput.required = true;
+            } else {
+                vegSection.style.display = 'none';
+                vegInput.required = false;
+                vegInput.value = '無';
+            }
+        }
+
+        // Show Success Message
         function showSuccess() {
-            // 提交後隱藏表單並顯示成功訊息
-            document.querySelector('form').style.display = 'none';
-            document.getElementById('successMsg').style.display = 'block';
-            document.getElementById('rsvp').scrollIntoView({behavior: 'smooth'});
+            document.getElementById('rsvpForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+            window.scrollTo({
+                top: document.getElementById('rsvp').offsetTop - 100,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
