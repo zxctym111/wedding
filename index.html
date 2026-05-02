@@ -169,29 +169,31 @@
                     <input type="email" name="entry.1828609452" required placeholder="example@mail.com">
                 </div>
 
-                <!-- 與新人的關係 -->
+                <!-- 與新人的關係 (更新為三個選項) -->
                 <div>
                     <label>與新人的關係 <span class="label-en">RELATIONSHIP</span></label>
                     <select name="entry.133531335" required>
                         <option value="" disabled selected>請選擇關係</option>
-                        <option value="男方-建富的親友">男方-建富的親友</option>
-                        <option value="女方-Jessica的親友">女方-Jessica的親友</option>
+                        <option value="男方-Jeff建富的親友">男方-Jeff建富的親友</option>
+                        <option value="女方-Jessica婕芸的親友">女方-Jessica婕芸的親友</option>
+                        <option value="內湖高工的同事">內湖高工的同事</option>
                     </select>
                 </div>
 
-                <!-- 出席意願 -->
+                <!-- 出席意願 (更新為三個選項) -->
                 <div>
                     <label>出席意願 <span class="label-en">ATTENDANCE</span></label>
                     <select id="attendanceChoice" name="entry.1037440218" required onchange="toggleLogic()">
                         <option value="" disabled selected>請選擇意願</option>
-                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！</option>
+                        <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！環保愛地球，請寄電子喜帖給我</option>
+                        <option value="會！一定會參加！想留紀念，請寄紙本喜帖給我">會！一定會參加！想留紀念，請寄紙本喜帖給我</option>
                         <option value="不克參加，但我祝福滿滿">不克參加，但我祝福滿滿</option>
                     </select>
                 </div>
 
                 <!-- 智慧顯示：僅當選擇參加時顯示 -->
                 <div id="logicFields" style="display: none;" class="fade-in">
-                    <!-- 參加晚宴人數 (已換成 entry.1365883754) -->
+                    <!-- 參加晚宴人數 (entry.1365883754) -->
                     <div>
                         <label>參加晚宴人數 <span class="label-en">NUMBER OF GUESTS</span></label>
                         <input type="number" id="guestCount" name="entry.1365883754" min="0" max="10" placeholder="請輸入出席人數" oninput="toggleDetails()">
@@ -216,7 +218,7 @@
                     <input type="text" name="entry.796650550" placeholder="收件地址">
                 </div>
 
-                <!-- 留言 (已換成 entry.570998358) -->
+                <!-- 留言 (entry.570998358) -->
                 <div class="mt-4">
                     <label>對新人的話 <span class="label-en">MESSAGE</span></label>
                     <textarea name="entry.570998358" rows="4" placeholder="祝福語..."></textarea>
@@ -254,6 +256,7 @@
 
         function toggleLogic() {
             const val = document.getElementById('attendanceChoice').value;
+            // 只要選項包含「會！」，就顯示人數填寫欄位
             document.getElementById('logicFields').style.display = val.includes("會！") ? 'block' : 'none';
         }
 
