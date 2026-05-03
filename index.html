@@ -75,7 +75,7 @@
 <body class="font-serif relative">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+    <nav id="navbar" class="fixed top-0 w-full z-50 glass-nav transition-transform duration-500 -translate-y-full">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-cormorant font-semibold tracking-widest text-morandi-sun">
                 Jeff <span class="text-morandi-green text-sm">&</span> Jessica
@@ -89,7 +89,7 @@
     </nav>
 
     <!-- Hero Cover -->
-    <section id="about" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section id="about" class="relative w-full h-screen flex items-end justify-center pb-24 md:pb-32 overflow-hidden">
         <div class="absolute inset-0 w-full h-full">
             <div class="absolute inset-0 bg-black/20 z-10"></div>
             <img src="https://i.postimg.cc/5ts0w3dC/she-ying-shi-da-zui-0008.jpg" alt="Jeff and Jessica Pre-wedding" class="w-full h-full object-cover object-center" />
@@ -254,9 +254,9 @@
                         </label>
                         <select name="entry.133531335" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
-                            <option value="1.Jeff建富的親友">Jeff建富的親友</option>
-                            <option value="2.Jessica婕芸的親友">Jessica婕芸的親友</option>
-                            <option value="3.內湖高工的同事">內湖高工的同事</option>
+                            <option value="1.Jeff建富的親友">1.Jeff建富的親友</option>
+                            <option value="2.Jessica婕芸的親友">2.Jessica婕芸的親友</option>
+                            <option value="3.內湖高工的同事">3.內湖高工的同事</option>
                         </select>
                     </div>
 
@@ -267,9 +267,9 @@
                         </label>
                         <select id="attendance-select" name="entry.1037440218" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
-                            <option value="會！一定參加！環保愛地球，請寄電子喜帖給我">會！一定參加！環保愛地球，請寄電子喜帖給我</option>
-                            <option value="會！一定會參加！但我想要珍藏紙本喜帖">會！一定會參加！但我想要珍藏紙本喜帖</option>
-                            <option value="無法參加，但祝福你們百年好合">無法參加，但祝福你們百年好合</option>
+                            <option value="1.會！一定參加！環保愛地球，請寄電子喜帖給我">1.會！一定參加！環保愛地球，請寄電子喜帖給我</option>
+                            <option value="2.會！一定會參加！但我想要珍藏紙本喜帖">2.會！一定會參加！但我想要珍藏紙本喜帖</option>
+                            <option value="3.無法參加，但祝福你們百年好合">3.無法參加，但祝福你們百年好合</option>
                         </select>
                     </div>
 
@@ -319,13 +319,13 @@
                             <label class="block text-sm text-gray-700 tracking-widest mb-2">
                                 是否需要素食？(幾份) 若無則填：無 <span class="font-cormorant italic text-morandi-sun ml-1">VEGETARIAN</span>
                             </label>
-                            <input type="text" id="veg-input" name="entry.332745958" class="form-input text-gray-800" placeholder="例如：1份，或填：無">
+                            <input type="text" id="veg-input" name="entry.1505679686" class="form-input text-gray-800" placeholder="例如：1份，或填：無">
                         </div>
                         <div>
                             <label class="block text-sm text-gray-700 tracking-widest mb-2">
                                 需要幾個兒童座椅 <span class="font-cormorant italic text-morandi-sun ml-1">BABY SEATS</span>
                             </label>
-                            <input type="number" id="baby-input" name="entry.1505679686" min="0" class="form-input text-gray-800" placeholder="若無請填 0">
+                            <input type="number" id="baby-input" name="entry.332745958" min="0" class="form-input text-gray-800" placeholder="若無請填 0">
                         </div>
                     </div>
 
@@ -409,7 +409,7 @@
 
         function updateFormVisibility() {
             // Logic A: 紙本喜帖 (僅在選擇要珍藏紙本喜帖時顯示)
-            if (attendanceSelect.value === '會！一定會參加！但我想要珍藏紙本喜帖') {
+            if (attendanceSelect.value === '2.會！一定會參加！但我想要珍藏紙本喜帖') {
                 paperSection.classList.remove('hidden');
                 zipInput.setAttribute('required', 'true');
                 addressInput.setAttribute('required', 'true');
@@ -439,6 +439,17 @@
         // Add event listeners
         attendanceSelect.addEventListener('change', updateFormVisibility);
         attendeesInput.addEventListener('input', updateFormVisibility);
+
+        // 4. Navbar Scroll Visibility Logic
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            // 往下滾動超過 80px 時顯示導覽列，在最頂端時隱藏
+            if (window.scrollY > 80) {
+                navbar.classList.remove('-translate-y-full');
+            } else {
+                navbar.classList.add('-translate-y-full');
+            }
+        });
     </script>
 </body>
 </html>
