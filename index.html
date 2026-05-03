@@ -149,21 +149,34 @@
                     <svg class="w-8 h-8 text-morandi-sun" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 </div>
                 
-                <h3 class="text-xl font-medium tracking-[0.2em] mb-8 text-morandi-green">婚宴資訊</h3>
+                <h3 class="text-xl font-medium tracking-[0.2em] mb-8 text-morandi-green">婚禮資訊</h3>
                 
                 <div class="space-y-6">
                     <div>
                         <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Date</p>
                         <p class="text-lg tracking-widest whitespace-nowrap">中華民國 115 年 10 月 10 日</p>
-                        <p class="text-md text-gray-500 mt-1 whitespace-nowrap">下午 5:30 準時入席</p>
+                    </div>
+                    
+                    <div class="w-12 h-px bg-morandi-sun/20 mx-auto"></div>
+
+                    <!-- 新增：教堂婚配彌撒資訊 -->
+                    <div>
+                        <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Ceremony</p>
+                        <p class="text-xl font-medium tracking-widest whitespace-nowrap mb-2">教堂婚配彌撒</p>
+                        <p class="text-md text-gray-500 mt-1 whitespace-nowrap">下午 14:00 - 16:00</p>
+                        <p class="text-sm text-gray-500 tracking-wider mt-1">
+                            <span class="whitespace-nowrap">南港耶穌聖心天主堂</span>
+                        </p>
                     </div>
                     
                     <div class="w-12 h-px bg-morandi-sun/20 mx-auto"></div>
                     
+                    <!-- 婚宴場地資訊 -->
                     <div>
-                        <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Venue</p>
+                        <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Banquet</p>
                         <p class="text-xl font-medium tracking-widest whitespace-nowrap mb-2">雅悅會館 旗艦館</p>
-                        <p class="text-sm text-gray-500 tracking-wider">
+                        <p class="text-md text-gray-500 mt-1 whitespace-nowrap">下午 5:30 準時入席</p>
+                        <p class="text-sm text-gray-500 tracking-wider mt-1">
                             <span class="whitespace-nowrap">115臺北市南港區經貿二路166號</span><br>
                             <span class="whitespace-nowrap">中國信託金融園區3樓</span>
                         </p>
@@ -171,20 +184,43 @@
                 </div>
 
                 <!-- Accordion for Transport -->
-                <div class="mt-10 text-left">
-                    <button onclick="toggleAccordion()" class="w-full bg-morandi-bg hover:bg-morandi-sun/10 text-morandi-green transition px-5 py-4 rounded-xl flex justify-between items-center group border border-morandi-green/20">
-                        <span class="tracking-widest font-medium text-sm">交通與停車指引 <span class="font-cormorant italic text-xs ml-2 opacity-70">TRANSPORTATION</span></span>
-                        <svg id="accordion-icon" class="w-5 h-5 transform transition-transform duration-300 text-morandi-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div id="transport-content" class="accordion-content bg-white mt-1 border-l-2 border-morandi-sun/40 px-5 text-sm text-gray-600 tracking-wide leading-relaxed">
-                        <div class="py-4 space-y-4">
-                            <div>
-                                <strong class="text-morandi-green block mb-1">大眾運輸：</strong>
-                                搭乘捷運至 <span class="whitespace-nowrap font-medium text-morandi-sun">捷運南港軟體園區站</span>，出站後步行約 3 分鐘即可抵達 <span class="whitespace-nowrap">中國信託金融園區</span>。
+                <div class="mt-10 text-left space-y-4">
+                    <!-- 教堂交通指引 -->
+                    <div>
+                        <button onclick="toggleAccordion('church-transport', 'church-icon')" class="w-full bg-morandi-bg hover:bg-morandi-sun/10 text-morandi-green transition px-5 py-4 rounded-xl flex justify-between items-center group border border-morandi-green/20">
+                            <span class="tracking-widest font-medium text-sm">教堂交通與停車指引 <span class="font-cormorant italic text-xs ml-2 opacity-70">CHURCH TRANSPORTATION</span></span>
+                            <svg id="church-icon" class="w-5 h-5 transform transition-transform duration-300 text-morandi-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="church-transport" class="accordion-content bg-white mt-1 border-l-2 border-morandi-sun/40 px-5 text-sm text-gray-600 tracking-wide leading-relaxed">
+                            <div class="py-4 space-y-4">
+                                <div>
+                                    <strong class="text-morandi-green block mb-1">大眾運輸：</strong>
+                                    搭乘捷運板南線至 <span class="whitespace-nowrap font-medium text-morandi-sun">捷運後山埤站</span> 3號出口，出站步行約 3-5 分鐘即可抵達。
+                                </div>
+                                <div>
+                                    <strong class="text-morandi-green block mb-1">自行開車：</strong>
+                                    教堂內部車位有限，建議可停放至鄰近的 <span class="whitespace-nowrap">玉成公園地下停車場</span> 或周邊收費停車格，步行至教堂約 5 分鐘。
+                                </div>
                             </div>
-                            <div>
-                                <strong class="text-morandi-green block mb-1">自行開車：</strong>
-                                園區內設有地下停車場，請由 <span class="whitespace-nowrap">經貿二路</span> 或 <span class="whitespace-nowrap">三重路</span> 進入。賓客享有免費停車優惠，請於宴會結束時攜帶停車代幣至招待桌消磁。
+                        </div>
+                    </div>
+                    
+                    <!-- 婚宴交通指引 -->
+                    <div>
+                        <button onclick="toggleAccordion('banquet-transport', 'banquet-icon')" class="w-full bg-morandi-bg hover:bg-morandi-sun/10 text-morandi-green transition px-5 py-4 rounded-xl flex justify-between items-center group border border-morandi-green/20">
+                            <span class="tracking-widest font-medium text-sm">婚宴交通與停車指引 <span class="font-cormorant italic text-xs ml-2 opacity-70">BANQUET TRANSPORTATION</span></span>
+                            <svg id="banquet-icon" class="w-5 h-5 transform transition-transform duration-300 text-morandi-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="banquet-transport" class="accordion-content bg-white mt-1 border-l-2 border-morandi-sun/40 px-5 text-sm text-gray-600 tracking-wide leading-relaxed">
+                            <div class="py-4 space-y-4">
+                                <div>
+                                    <strong class="text-morandi-green block mb-1">大眾運輸：</strong>
+                                    搭乘捷運至 <span class="whitespace-nowrap font-medium text-morandi-sun">捷運南港軟體園區站</span>，出站後步行約 3 分鐘即可抵達 <span class="whitespace-nowrap">中國信託金融園區</span>。
+                                </div>
+                                <div>
+                                    <strong class="text-morandi-green block mb-1">自行開車：</strong>
+                                    園區內設有地下停車場，請由 <span class="whitespace-nowrap">經貿二路</span> 或 <span class="whitespace-nowrap">三重路</span> 進入。賓客享有免費停車優惠，請於宴會結束時攜帶停車代幣至招待桌消磁。
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -254,9 +290,9 @@
                         </label>
                         <select name="entry.133531335" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
-                            <option value="Jeff 建富的親友">Jeff 建富的親友</option>
-                            <option value="Jessica 婕芸的親友">Jessica 婕芸的親友</option>
-                            <option value="內湖高工的同事">內湖高工的同事</option>
+                            <option value="1.Jeff建富的親友">1.Jeff建富的親友</option>
+                            <option value="2.Jessica婕芸的親友">2.Jessica婕芸的親友</option>
+                            <option value="3.內湖高工的同事">3.內湖高工的同事</option>
                         </select>
                     </div>
 
@@ -267,9 +303,9 @@
                         </label>
                         <select id="attendance-select" name="entry.1037440218" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
-                            <option value="會！一定參加！環保愛地球，請寄電子喜帖給我">會！一定參加！環保愛地球，請寄電子喜帖給我</option>
-                            <option value="會！一定會參加！但我想要珍藏紙本喜帖">會！一定會參加！但我想要珍藏紙本喜帖</option>
-                            <option value="無法參加，但祝福你們百年好合">無法參加，但祝福你們百年好合</option>
+                            <option value="1.會！一定參加！環保愛地球，請寄電子喜帖給我">1.會！一定參加！環保愛地球，請寄電子喜帖給我</option>
+                            <option value="2.會！一定會參加！但我想要珍藏紙本喜帖">2.會！一定會參加！但我想要珍藏紙本喜帖</option>
+                            <option value="3.無法參加，但祝福你們百年好合">3.無法參加，但祝福你們百年好合</option>
                         </select>
                     </div>
 
@@ -281,12 +317,32 @@
                         <input type="tel" name="entry.796650550" required class="form-input text-gray-800">
                     </div>
 
+                    <!-- 新增：教堂婚配彌撒問題區塊 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                                是否參加教堂婚配彌撒 <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY</span>
+                            </label>
+                            <select name="entry.390518395" required class="form-input text-gray-800 cursor-pointer">
+                                <option value="" disabled selected>請選擇 / Select</option>
+                                <option value="是，我會參加">是，我會參加</option>
+                                <option value="否，我無法參加">否，我無法參加</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                                參加教堂彌撒人數(含本人) <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY ATTENDEES</span>
+                            </label>
+                            <input type="number" name="entry.1563942884" min="0" class="form-input text-gray-800" placeholder="若無請填 0">
+                        </div>
+                    </div>
+
                     <!-- Number of Attendees -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                            參加晚宴人數(包含您自己) <span class="font-cormorant italic text-morandi-sun ml-1">ATTENDEES</span>
+                            參加晚宴人數(包含您自己) <span class="font-cormorant italic text-morandi-sun ml-1">BANQUET ATTENDEES</span>
                         </label>
-                        <input type="number" id="attendees-input" name="entry.1365883754" min="0" required class="form-input text-gray-800">
+                        <input type="number" id="attendees-input" name="entry.1365883754" min="0" required class="form-input text-gray-800" placeholder="若無請填 0">
                     </div>
 
                     <!-- 智能表單邏輯區域 A：紙本喜帖地址 (選擇想要珍藏紙本喜帖時出現) -->
@@ -383,9 +439,9 @@
         updateCountdown();
 
         // 2. Accordion Logic for Transportation
-        function toggleAccordion() {
-            const content = document.getElementById("transport-content");
-            const icon = document.getElementById("accordion-icon");
+        function toggleAccordion(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
             
             content.classList.toggle("open");
             if (content.classList.contains("open")) {
@@ -409,7 +465,7 @@
 
         function updateFormVisibility() {
             // Logic A: 紙本喜帖 (僅在選擇要珍藏紙本喜帖時顯示)
-            if (attendanceSelect.value === '會！一定會參加！但我想要珍藏紙本喜帖') {
+            if (attendanceSelect.value === '2.會！一定會參加！但我想要珍藏紙本喜帖') {
                 paperSection.classList.remove('hidden');
                 zipInput.setAttribute('required', 'true');
                 addressInput.setAttribute('required', 'true');
