@@ -294,81 +294,88 @@
             <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="bg-white p-8 md:p-12 shadow-sm rounded-lg border border-gray-100 relative">
                 
                 <div class="space-y-8">
-                    <!-- 姓名 -->
+                    <!-- 1. 姓名 -->
                     <div class="relative">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">姓名 NAME *</label>
-                        <input type="text" name="entry.927207703" required placeholder="請輸入您的真實姓名" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">您的大名 NAME *</label>
+                        <input type="text" name="entry.927207703" required value="" placeholder="請輸入您的真實姓名" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
                     </div>
 
-                    <!-- 電話 -->
-                    <div class="relative">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">電話 PHONE *</label>
-                        <input type="tel" name="entry.796650550" required placeholder="09XX-XXX-XXX" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
-                    </div>
-
-                    <!-- 電子信箱 -->
+                    <!-- 2. 電子信箱 -->
                     <div class="relative">
                         <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">電子信箱 EMAIL *</label>
-                        <input type="email" name="entry.1828609452" required placeholder="example@mail.com" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base font-sans">
+                        <input type="email" name="entry.1828609452" required value="" placeholder="example@mail.com" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base font-sans">
                     </div>
 
-                    <!-- 賓客身份 -->
+                    <!-- 3. 您與新人的關係 -->
                     <div class="relative">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">賓客身份 RELATIONSHIP *</label>
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">您與新人的關係是 RELATIONSHIP *</label>
                         <select name="entry.133531335" required class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 text-sm md:text-base appearance-none cursor-pointer">
                             <option value="" disabled selected>請選擇您的身份</option>
-                            <option value="男方-Jeff建富的親友">男方 - Jeff 建富的親友</option>
-                            <option value="女方-Jessica的親友">女方 - Jessica 的親友</option>
-                            <option value="內湖高工的同事">內湖高工的同事</option>
+                            <option value="Jeff建富的親友">1. Jeff 建富的親友</option>
+                            <option value="Jessica婕芸的親友">2. Jessica 婕芸的親友</option>
+                            <option value="內湖高工的同事">3. 內湖高工的同事</option>
                         </select>
                     </div>
 
-                    <!-- 出席意願 -->
+                    <!-- 4. 您當天會參加嗎 -->
                     <div class="relative">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">出席意願 ATTENDANCE *</label>
-                        <select name="entry.1037440218" required class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 text-sm md:text-base appearance-none cursor-pointer">
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">您當天會參加嗎 ATTENDANCE *</label>
+                        <select id="attendanceSelect" name="entry.1037440218" required onchange="toggleConditionalFields()" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 text-sm md:text-base appearance-none cursor-pointer">
                             <option value="" disabled selected>請選擇出席意願</option>
-                            <option value="會！一定會參加！環保愛地球，請寄電子喜帖給我">會！一定會參加！（請寄電子喜帖給我）</option>
-                            <option value="會！一定會參加！但我想要珍藏紙本喜帖">會！一定會參加！（請寄紙本喜帖給我）</option>
-                            <option value="精神與你們同在，祝你們百年好合">無法參加，但祝福你們百年好合</option>
+                            <option value="會！一定參加！環保愛地球，請寄電子喜帖給我">1. 會！一定參加！環保愛地球，請寄電子喜帖給我</option>
+                            <option value="會！一定會參加！但我想要珍藏紙本喜帖">2. 會！一定會參加！但我想要珍藏紙本喜帖</option>
+                            <option value="無法參加，但祝福你們百年好合">3. 無法參加，但祝福你們百年好合</option>
                         </select>
                     </div>
 
-                    <!-- 參加人數 -->
+                    <!-- 智能顯示區塊 A：當選擇需要紙本喜帖時顯示地址 -->
+                    <div id="conditionalAddressFields" class="hidden space-y-8 pt-6 border-t border-dashed border-gray-200 mt-8 bg-[#faf9f6] p-4 rounded-md">
+                        <p class="text-xs text-[#d4a373] tracking-widest mb-2">＊ 為了寄送紙本喜帖，請協助填寫收件資訊</p>
+                        
+                        <div class="relative">
+                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">請幫我填寫寄件郵遞區號 ZIP CODE</label>
+                            <input type="text" name="entry.1047211088" value="" placeholder="例如：241" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
+                        </div>
+
+                        <div class="relative">
+                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">請幫我填寫寄件地址 ADDRESS</label>
+                            <input type="text" name="entry.301408679" value="" placeholder="請填寫完整收件地址" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
+                        </div>
+                    </div>
+
+                    <!-- 5. 電話 -->
                     <div class="relative">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">參加晚宴人數 ATTENDEES (包含您自己) *</label>
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">請幫我填寫電話 PHONE *</label>
+                        <input type="tel" name="entry.796650550" required value="" placeholder="09XX-XXX-XXX" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
+                    </div>
+
+                    <!-- 6. 參加人數 -->
+                    <div class="relative">
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">參加晚宴人數(包含您自己) ATTENDEES *</label>
                         <input type="number" id="attendeesCount" name="entry.1505679686" min="0" max="10" value="" placeholder="請填寫數字，若無法參加請填 0" required onchange="toggleConditionalFields()" onkeyup="toggleConditionalFields()" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
                     </div>
 
-                    <!-- 智能顯示區塊：當人數大於 0 時才顯示 -->
-                    <div id="conditionalFields" class="hidden space-y-8 pt-6 border-t border-dashed border-gray-200 mt-8">
-                        <p class="text-xs text-[#d4a373] tracking-widest mb-4">＊ 以下資訊請協助填寫，讓我們能為您妥善安排</p>
+                    <!-- 智能顯示區塊 B：當人數大於 0 時才顯示飲食與兒童椅 -->
+                    <div id="conditionalDiningFields" class="hidden space-y-8 pt-6 border-t border-dashed border-gray-200 mt-8 bg-[#faf9f6] p-4 rounded-md">
+                        <p class="text-xs text-[#d4a373] tracking-widest mb-2">＊ 為了讓您有完美的用餐體驗，請協助確認以下需求</p>
                         
+                        <!-- 7. 素食需求 -->
                         <div class="relative">
-                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">飲食需求 DIETARY NEEDS</label>
-                            <select name="entry.1365883754" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 text-sm md:text-base appearance-none cursor-pointer">
-                                <option value="無特別需求">無特別需求</option>
-                                <option value="全素">全素</option>
-                                <option value="蛋奶素">蛋奶素</option>
-                                <option value="海鮮過敏">海鮮過敏</option>
-                                <option value="其他 (請於備註說明)">其他 (請於下方備註說明)</option>
-                            </select>
+                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">是否需要素食？(幾份) VEGETARIAN</label>
+                            <input type="text" name="entry.1365883754" value="" placeholder="例如：2份蛋奶素 (若無則填：無)" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
                         </div>
 
+                        <!-- 8. 兒童座椅 -->
                         <div class="relative">
-                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">需要兒童椅數量 BABY CHAIR</label>
-                            <select name="entry.332745958" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 text-sm md:text-base appearance-none cursor-pointer">
-                                <option value="不需要">不需要</option>
-                                <option value="需要 1 張">需要 1 張</option>
-                                <option value="需要 2 張">需要 2 張</option>
-                            </select>
+                            <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">需要幾個兒童座椅 BABY CHAIR</label>
+                            <input type="number" name="entry.332745958" min="0" value="" placeholder="請填寫數字 (若無則填：0)" class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base">
                         </div>
                     </div>
 
-                    <!-- 祝福話語 -->
+                    <!-- 9. 給新人的話 -->
                     <div class="relative pt-4">
-                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">給我們的話 MESSAGE</label>
-                        <textarea name="entry.570998358" rows="3" placeholder="有什麼想對我們說的嗎？或是有任何備註事項..." class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base resize-none"></textarea>
+                        <label class="block text-xs tracking-widest text-[#8da399] font-serif-en uppercase mb-2">給新人的話 MESSAGE</label>
+                        <textarea name="entry.570998358" rows="3" placeholder="有什麼想對我們說的祝福嗎？..." class="w-full border-b border-gray-300 py-2 bg-transparent focus:border-[#d4a373] outline-none text-gray-700 placeholder-gray-300 text-sm md:text-base resize-none"></textarea>
                     </div>
                 </div>
 
@@ -431,14 +438,10 @@
         // --------------------------------------------------------
         function toggleAccordion(id) {
             const currentItem = document.getElementById(id + '-content').parentElement;
-            const allItems = document.querySelectorAll('.accordion-content');
             
-            // 如果點擊的是已經展開的，則收合
             if (currentItem.classList.contains('accordion-active')) {
                 currentItem.classList.remove('accordion-active');
             } else {
-                // 如果需要自動收合其他面板可以加上這段
-                // allItems.forEach(item => item.parentElement.classList.remove('accordion-active'));
                 currentItem.classList.add('accordion-active');
             }
         }
@@ -447,15 +450,26 @@
         // 3. 智能表單邏輯 (條件式欄位顯示)
         // --------------------------------------------------------
         function toggleConditionalFields() {
+            // 取得下拉選單與參加人數的數值
+            const attendance = document.getElementById('attendanceSelect').value;
             const countInput = document.getElementById('attendeesCount').value;
             const count = parseInt(countInput);
-            const fields = document.getElementById('conditionalFields');
             
-            // 只有當填寫的數字大於 0 時，才顯示飲食需求和兒童椅欄位
+            const diningFields = document.getElementById('conditionalDiningFields');
+            const addressFields = document.getElementById('conditionalAddressFields');
+            
+            // 邏輯 1: 當參加晚宴人數 > 0 時，才顯示「素食需求」與「兒童座椅」
             if (!isNaN(count) && count > 0) {
-                fields.classList.remove('hidden');
+                diningFields.classList.remove('hidden');
             } else {
-                fields.classList.add('hidden');
+                diningFields.classList.add('hidden');
+            }
+
+            // 邏輯 2: 當選擇「需要紙本喜帖」時，才顯示「郵遞區號」與「寄件地址」
+            if (attendance === '會！一定會參加！但我想要珍藏紙本喜帖') {
+                addressFields.classList.remove('hidden');
+            } else {
+                addressFields.classList.add('hidden');
             }
         }
 
