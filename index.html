@@ -23,20 +23,20 @@
                         cormorant: ['"Cormorant Garamond"', 'serif']
                     },
                     boxShadow: {
-                        'glow': '0 8px 30px rgba(0,0,0,0.06)',
-                        'vcard': '0 15px 40px rgba(212, 163, 115, 0.1)'
+                        'glow': '0 8px 30px rgba(0,0,0,0.04)',
+                        'vcard': '0 15px 45px rgba(212, 163, 115, 0.08)'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #fdfbf7; color: #4a4a4a; }
+        body { background-color: #fdfbf7; color: #4a4a4a; overflow-x: hidden; }
         .glass-nav {
             background: rgba(253, 251, 247, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212, 163, 115, 0.15);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.12);
         }
         .form-input {
             width: 100%;
@@ -59,9 +59,8 @@
             background-size: 1.2em 1.2em;
             padding-right: 2rem;
         }
-        /* Accordion transition */
         .accordion-content {
-            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
             max-height: 0;
             opacity: 0;
             overflow: hidden;
@@ -82,6 +81,8 @@
             </div>
             <div class="flex space-x-6 text-sm tracking-widest font-medium">
                 <a href="#about" class="hover:text-morandi-sun transition duration-300">關於我們</a>
+                <a href="#story" class="hover:text-morandi-sun transition duration-300">我們的故事</a>
+                <a href="#gallery" class="hover:text-morandi-sun transition duration-300">幸福相片</a>
                 <a href="#details" class="hover:text-morandi-sun transition duration-300">婚禮詳情</a>
                 <a href="#rsvp" class="hover:text-morandi-sun transition duration-300">出席回函</a>
             </div>
@@ -107,8 +108,34 @@
         </div>
     </section>
 
+    <!-- Our Story Section -->
+    <section id="story" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="mb-10">
+                <span class="font-cormorant text-morandi-sun text-lg tracking-[0.2em] block mb-2">OUR STORY</span>
+                <h2 class="text-3xl font-semibold text-morandi-green tracking-widest font-serif">我們的故事</h2>
+                <div class="w-12 h-px bg-morandi-sun/30 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="relative px-4 py-8 md:px-12 md:py-12 bg-morandi-bg/50 rounded-2xl border border-morandi-sun/10 shadow-sm">
+                <!-- Quotation Mark -->
+                <span class="absolute top-4 left-6 text-5xl font-serif text-morandi-sun/20">“</span>
+                
+                <p class="text-gray-600 leading-loose text-lg font-serif tracking-widest text-justify md:text-center">
+                    2022 年因工作相識的我們，從同事、朋友到戀人，緣分在一次次的交流與陪伴中悄悄萌芽。感謝命運讓我們在人生的旅程中相遇，也感謝彼此成為最溫暖的依靠。
+                </p>
+                <p class="text-gray-600 leading-loose text-lg font-serif tracking-widest text-justify md:text-center mt-6">
+                    如今，我們決定攜手邁向人生下一個階段，誠摯邀請您見證我們的幸福時刻。
+                </p>
+
+                <!-- Quotation Mark -->
+                <span class="absolute bottom-2 right-6 text-5xl font-serif text-morandi-sun/20">”</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Countdown Section -->
-    <section class="py-20 bg-morandi-bg">
+    <section class="py-20 bg-morandi-bg/30 relative">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-semibold text-morandi-sun mb-2 tracking-widest">婚禮倒數</h2>
@@ -139,8 +166,54 @@
         </div>
     </section>
 
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="font-cormorant text-morandi-sun text-lg tracking-[0.2em] block mb-2">GALLERY</span>
+                <h2 class="text-3xl font-semibold text-morandi-green tracking-widest font-serif">幸福相片集</h2>
+                <p class="mt-2 text-sm text-gray-400 tracking-wider">點擊相片可放大觀賞我們的幸福瞬間</p>
+                <div class="w-12 h-px bg-morandi-sun/30 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Photo 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white p-2 border border-morandi-sun/10" onclick="openLightbox('https://i.postimg.cc/tJtbbqDb/she-ying-shi-da-zui-0001.jpg')">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://i.postimg.cc/tJtbbqDb/she-ying-shi-da-zui-0001.jpg" alt="Wedding Photo 1" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                </div>
+                <!-- Photo 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white p-2 border border-morandi-sun/10" onclick="openLightbox('https://i.postimg.cc/6QsMrrtj/she-ying-shi-da-zui-0122.jpg')">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://i.postimg.cc/6QsMrrtj/she-ying-shi-da-zui-0122.jpg" alt="Wedding Photo 2" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                </div>
+                <!-- Photo 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white p-2 border border-morandi-sun/10" onclick="openLightbox('https://i.postimg.cc/JzXqzsZF/she-ying-shi-da-zui-0170.jpg')">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://i.postimg.cc/JzXqzsZF/she-ying-shi-da-zui-0170.jpg" alt="Wedding Photo 3" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                </div>
+                <!-- Photo 4 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white p-2 border border-morandi-sun/10" onclick="openLightbox('https://i.postimg.cc/rFB13q39/she-ying-shi-da-zui-0232.jpg')">
+                    <div class="overflow-hidden rounded-xl h-72 w-full">
+                        <img src="https://i.postimg.cc/rFB13q39/she-ying-shi-da-zui-0232.jpg" alt="Wedding Photo 4" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl font-light hover:text-morandi-sun transition-colors">&times;</button>
+        <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border-4 border-white/10" onclick="event.stopPropagation()">
+    </div>
+
     <!-- Details & V-Card Section -->
-    <section id="details" class="py-20 relative bg-white">
+    <section id="details" class="py-20 relative bg-morandi-bg/20">
         <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23d4a373\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         <div class="max-w-lg mx-auto px-4 relative z-10">
             <!-- V-Card -->
@@ -159,7 +232,7 @@
                     
                     <div class="w-12 h-px bg-morandi-sun/20 mx-auto"></div>
 
-                    <!-- 新增：教堂婚配彌撒資訊 -->
+                    <!-- 教堂婚配彌撒資訊 -->
                     <div>
                         <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Ceremony</p>
                         <p class="text-xl font-medium tracking-widest whitespace-nowrap mb-2">教堂婚配彌撒</p>
@@ -250,12 +323,16 @@
                         if (formSubmitted) {
                             document.getElementById('rsvp-form').classList.add('hidden');
                             document.getElementById('success-message').classList.remove('hidden');
+                            window.scrollTo({
+                                top: document.getElementById('rsvp').offsetTop - 100,
+                                behavior: 'smooth'
+                            });
                         }
                     }
                 </script>
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="onIframeLoad()"></iframe>
                 
-                <!-- Success Message (Hidden by default) -->
+                <!-- Success Message -->
                 <div id="success-message" class="hidden text-center py-10">
                     <div class="w-16 h-16 bg-morandi-sun/10 text-morandi-sun rounded-full flex items-center justify-center mx-auto mb-6">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -304,6 +381,26 @@
                         </select>
                     </div>
 
+                    <!-- Church Mass RSVP -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                                是否參加教堂婚配彌撒 <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY</span>
+                            </label>
+                            <select name="entry.390518395" required class="form-input text-gray-800 cursor-pointer">
+                                <option value="" disabled selected>請選擇 / Select</option>
+                                <option value="是，我會參加">是，我會參加</option>
+                                <option value="否，我無法參加">否，我無法參加</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                                參加教堂彌撒人數(含本人) <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY ATTENDEES</span>
+                            </label>
+                            <input type="number" name="entry.1563942884" min="0" class="form-input text-gray-800" placeholder="若無請填 0">
+                        </div>
+                    </div>
+
                     <!-- Attendance -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
@@ -323,26 +420,6 @@
                             請幫我填寫電話 <span class="font-cormorant italic text-morandi-sun ml-1">PHONE</span>
                         </label>
                         <input type="tel" name="entry.796650550" required class="form-input text-gray-800">
-                    </div>
-
-                    <!-- 新增：教堂婚配彌撒問題區塊 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                                是否參加教堂婚配彌撒 <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY</span>
-                            </label>
-                            <select name="entry.390518395" required class="form-input text-gray-800 cursor-pointer">
-                                <option value="" disabled selected>請選擇 / Select</option>
-                                <option value="是，我會參加">是，我會參加</option>
-                                <option value="否，我無法參加">否，我無法參加</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                                參加教堂彌撒人數(含本人) <span class="font-cormorant italic text-morandi-sun ml-1">CEREMONY ATTENDEES</span>
-                            </label>
-                            <input type="number" name="entry.1563942884" min="0" class="form-input text-gray-800" placeholder="若無請填 0">
-                        </div>
                     </div>
 
                     <!-- Number of Attendees -->
@@ -504,7 +581,26 @@
         attendanceSelect.addEventListener('change', updateFormVisibility);
         attendeesInput.addEventListener('input', updateFormVisibility);
 
-        // 4. Navbar Scroll Visibility Logic
+        // 4. Lightbox Functions
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.classList.remove('hidden');
+            setTimeout(() => {
+                lightbox.classList.add('opacity-100');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('opacity-100');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+            }, 300);
+        }
+
+        // 5. Navbar Scroll Visibility Logic
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             // 往下滾動超過 80px 時顯示導覽列，在最頂端時隱藏
