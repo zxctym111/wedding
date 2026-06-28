@@ -186,7 +186,7 @@
                         <img src="https://i.postimg.cc/tJtbbqDb/she-ying-shi-da-zui-0001.jpg" alt="Wedding Photo 1" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
                     </div>
                 </div>
-                <!-- Photo 2 (已更新) -->
+                <!-- Photo 2 -->
                 <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer bg-white p-2 border border-morandi-sun/10" onclick="openLightbox('https://i.postimg.cc/kG1nkCmn/she-ying-shi-da-zui-jie-yun-du-zhao.jpg')">
                     <div class="overflow-hidden rounded-xl h-72 w-full">
                         <img src="https://i.postimg.cc/kG1nkCmn/she-ying-shi-da-zui-jie-yun-du-zhao.jpg" alt="Wedding Photo 2" class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
@@ -252,7 +252,8 @@
                         <p class="text-xl font-medium tracking-widest whitespace-nowrap mb-2">教堂婚配彌撒</p>
                         <p class="text-md text-gray-500 mt-1 whitespace-nowrap">下午 14:00 - 16:00</p>
                         <p class="text-sm text-gray-500 tracking-wider mt-1">
-                            <span class="whitespace-nowrap">南港耶穌聖心天主堂</span>
+                            <span class="whitespace-nowrap font-medium text-morandi-green">南港耶穌聖心天主堂</span><br>
+                            <span class="text-xs text-gray-400 block mt-1 whitespace-nowrap">115臺北市南港區萬福里忠孝東路六段114號</span>
                         </p>
                     </div>
                     
@@ -262,7 +263,7 @@
                     <div>
                         <p class="font-cormorant text-morandi-sun text-sm tracking-[0.2em] uppercase mb-1">Banquet</p>
                         <p class="text-xl font-medium tracking-widest whitespace-nowrap mb-2">雅悅會館 旗艦館</p>
-                        <p class="text-md text-gray-500 mt-1 whitespace-nowrap">下午 5:30 準時入席</p>
+                        <p class="text-md text-gray-500 mt-1 whitespace-nowrap">17:30 準時入席</p>
                         <p class="text-sm text-gray-500 tracking-wider mt-1">
                             <span class="whitespace-nowrap">115臺北市南港區經貿二路166號</span><br>
                             <span class="whitespace-nowrap">中國信託金融園區3樓</span>
@@ -358,23 +359,31 @@
                 <!-- Main Form -->
                 <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()" class="space-y-8">
                     
-                    <!-- Name & Email Row -->
+                    <!-- Name Row (Full Width) -->
+                    <div>
+                        <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                            您的大名 <span class="font-cormorant italic text-morandi-sun ml-1">NAME</span>
+                        </label>
+                        <input type="text" name="entry.927207703" required class="form-input text-gray-800">
+                    </div>
+
+                    <!-- Email & Phone Row (Side-by-Side) -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                                您的大名 <span class="font-cormorant italic text-morandi-sun ml-1">NAME</span>
-                            </label>
-                            <input type="text" name="entry.927207703" required class="form-input text-gray-800">
-                        </div>
                         <div>
                             <label class="block text-sm text-gray-700 tracking-widest mb-2">
                                 電子信箱 <span class="font-cormorant italic text-morandi-sun ml-1">EMAIL</span>
                             </label>
                             <input type="email" name="entry.1828609452" required class="form-input text-gray-800">
                         </div>
+                        <div>
+                            <label class="block text-sm text-gray-700 tracking-widest mb-2">
+                                請幫我填寫電話 <span class="font-cormorant italic text-morandi-sun ml-1">PHONE</span>
+                            </label>
+                            <input type="tel" name="entry.796650550" required class="form-input text-gray-800">
+                        </div>
                     </div>
 
-                    <!-- Relationship -->
+                    <!-- Relationship Row (Standalone Full Width) -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
                             您與新人的關係是 <span class="font-cormorant italic text-morandi-sun ml-1">RELATIONSHIP</span>
@@ -382,20 +391,18 @@
                         <select name="entry.133531335" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
                             <option value="建富家人">建富家人</option>
-                            <option value="建富朋友/同學">建富朋友/同學</option>
-                            <option value="建富學生">建富學生</option>
+                            <option value="建富師長/朋友/同學">建富師長/朋友/同學</option>
                             <option disabled>──────────</option>
                             <option value="婕芸家人">婕芸家人</option>
-                            <option value="婕芸朋友/同學">婕芸朋友/同學</option>
+                            <option value="婕芸師長/朋友/同學">婕芸師長/朋友/同學</option>
                             <option value="婕芸教會神師/朋友">婕芸教會神師/朋友</option>
                             <option value="婕芸內湖天主堂弟兄姊妹">婕芸內湖天主堂弟兄姊妹</option>
-                            <option value="婕芸學生">婕芸學生</option>
                             <option disabled>──────────</option>
                             <option value="建富&婕芸內湖高工同事">建富&婕芸內湖高工同事</option>
                         </select>
                     </div>
 
-                    <!-- 教堂彌撒與人數問題 (移至此處，在會來參加晚宴嗎之前) -->
+                    <!-- 教堂彌撒與人數問題 (在會來參加晚宴嗎之前) -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <label class="block text-sm text-gray-700 tracking-widest mb-2">
@@ -415,25 +422,17 @@
                         </div>
                     </div>
 
-                    <!-- Attendance -->
+                    <!-- Attendance (English label updated to BANQUET) -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                            會來參加晚宴嗎 <span class="font-cormorant italic text-morandi-sun ml-1">ATTENDANCE</span>
+                            會來參加晚宴嗎 <span class="font-cormorant italic text-morandi-sun ml-1">BANQUET</span>
                         </label>
                         <select id="attendance-select" name="entry.1037440218" required class="form-input text-gray-800 cursor-pointer">
                             <option value="" disabled selected>請選擇 / Select</option>
                             <option value="1.會！一定參加！環保愛地球，請寄電子喜帖給我">1.會！一定參加！環保愛地球，請寄電子喜帖給我</option>
-                            <option value="2.會！一定會參加！但我想要珍藏紙本喜帖">2.會！一定會參加！但我想要珍藏紙本喜帖</option>
+                            <option value="2.會!一定會參加!我想要珍藏紙本喜帖">2.會!一定會參加!我想要珍藏紙本喜帖</option>
                             <option value="3.無法參加，但祝福你們百年好合">3.無法參加，但祝福你們百年好合</option>
                         </select>
-                    </div>
-
-                    <!-- Phone -->
-                    <div>
-                        <label class="block text-sm text-gray-700 tracking-widest mb-2">
-                            請幫我填寫電話 <span class="font-cormorant italic text-morandi-sun ml-1">PHONE</span>
-                        </label>
-                        <input type="tel" name="entry.796650550" required class="form-input text-gray-800">
                     </div>
 
                     <!-- Number of Attendees -->
@@ -506,7 +505,7 @@
     <!-- Footer -->
     <footer class="bg-white py-10 text-center border-t border-morandi-sun/10">
         <p class="font-cormorant text-morandi-sun text-xl mb-2">Jeff & Jessica</p>
-        <p class="text-xs text-gray-400 tracking-[0.2em]">© 2026 JEFF & JESSICA WEDDING</p>
+        <p class="text-xs text-gray-400 tracking-[0.2em]">© 2026 Jeff and Jessica's Wedding</p>
     </footer>
 
     <!-- Scripts -->
@@ -563,8 +562,8 @@
         const babyInput = document.getElementById('baby-input');
 
         function updateFormVisibility() {
-            // Logic A: 紙本喜帖 (僅在選擇要珍藏紙本喜帖時顯示)
-            if (attendanceSelect.value === '2.會！一定會參加！但我想要珍藏紙本喜帖') {
+            // Logic A: 紙本喜帖 (僅在選擇 2.會!一定會參加!我想要珍藏紙本喜帖 時顯示)
+            if (attendanceSelect.value === '2.會!一定會參加!我想要珍藏紙本喜帖') {
                 paperSection.classList.remove('hidden');
                 zipInput.setAttribute('required', 'true');
                 addressInput.setAttribute('required', 'true');
