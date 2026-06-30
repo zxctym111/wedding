@@ -332,6 +332,11 @@
                 <script>
                     let formSubmitted = false;
                     function handleFormSubmit() {
+                        // 智能表單自動化：若給新人的話未填寫，自動填入「無」
+                        const msgInput = document.getElementById('message-input');
+                        if (msgInput && !msgInput.value.trim()) {
+                            msgInput.value = "無";
+                        }
                         formSubmitted = true;
                     }
                     function onIframeLoad() {
@@ -359,6 +364,11 @@
                 <!-- Main Form -->
                 <form id="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSekiP1_8JVdJ27haukSFBpCIhb-Qm4iSRfXiR1NWzOOAQBARg/formResponse" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()" class="space-y-8">
                     
+                    <!-- 溫馨備註：避免重複填寫 -->
+                    <div class="text-center bg-morandi-sun/5 py-3 px-4 rounded-xl border border-morandi-sun/15 text-xs md:text-sm text-morandi-sun tracking-wider leading-relaxed">
+                        ✨ 貼心提醒：同一家人確認後，請一位家人代表填寫即可。
+                    </div>
+
                     <!-- Name Row (Full Width) -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
@@ -402,7 +412,13 @@
                         </select>
                     </div>
 
-                    <!-- 教堂彌撒與人數問題 (在會來參加晚宴嗎之前) -->
+                    <!-- 教堂彌撒溫馨說明段落 -->
+                    <div class="bg-morandi-bg border border-morandi-sun/20 p-5 rounded-2xl text-sm text-gray-600 leading-relaxed tracking-wider shadow-sm">
+                        <span class="text-morandi-sun font-medium block mb-2 font-serif text-base">⛪ 婚配彌撒的神聖邀約：</span>
+                        婚配彌撒不僅是婚禮，更是一場充滿愛的神聖盟約。誠摯邀請每一位親友，不論是否為天主教教友，都能一起參與、見證我們在天主前許下終身承諾。
+                    </div>
+
+                    <!-- 教堂彌撒與人數問題 -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <label class="block text-sm text-gray-700 tracking-widest mb-2">
@@ -422,7 +438,7 @@
                         </div>
                     </div>
 
-                    <!-- Attendance (English label updated to BANQUET) -->
+                    <!-- Attendance (English label: BANQUET) -->
                     <div>
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
                             會來參加晚宴嗎 <span class="font-cormorant italic text-morandi-sun ml-1">BANQUET</span>
@@ -443,7 +459,7 @@
                         <input type="number" id="attendees-input" name="entry.1365883754" min="0" required class="form-input text-gray-800" placeholder="若無請填 0">
                     </div>
 
-                    <!-- 智能表單邏輯區域 A：紙本喜帖地址 (選擇想要珍藏紙本喜帖時出現) -->
+                    <!-- 智能表單邏輯區域 A：紙本喜帖地址 -->
                     <div id="paper-invite-section" class="hidden bg-morandi-sun/5 p-6 rounded-xl space-y-6 border border-morandi-sun/20">
                         <div class="flex items-center text-morandi-green mb-2">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -463,7 +479,7 @@
                         </div>
                     </div>
 
-                    <!-- 智能表單邏輯區域 B：晚宴需求 (人數大於0時出現) -->
+                    <!-- 智能表單邏輯區域 B：晚宴需求 -->
                     <div id="banquet-details-section" class="hidden bg-morandi-green/5 p-6 rounded-xl space-y-6 border border-morandi-green/20">
                         <div class="flex items-center text-morandi-sun mb-2">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
@@ -488,7 +504,7 @@
                         <label class="block text-sm text-gray-700 tracking-widest mb-2">
                             給新人的話 <span class="font-cormorant italic text-morandi-sun ml-1">MESSAGES</span>
                         </label>
-                        <textarea name="entry.570998358" rows="3" class="form-input text-gray-800 resize-none"></textarea>
+                        <textarea id="message-input" name="entry.570998358" rows="3" class="form-input text-gray-800 resize-none" placeholder="想對我們說的話...（留空將自動填寫為：無）"></textarea>
                     </div>
 
                     <!-- Submit Button -->
